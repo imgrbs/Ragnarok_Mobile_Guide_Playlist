@@ -1,21 +1,82 @@
-import React from 'react'
+import React, { Component } from "react";
+import styled from 'styled-components'
 
-const Card = () => (
-    <div className="col-md-4">
-        <div className="card mb-4 shadow-sm">
-            <img href="https://cdn.tigthai.com/imguploads/201803/28/03253180015222309958748_RO_main.jpg" className="card-img-top" height="225" width="100%" alt="" />
+import YouTube from "react-youtube";
+import { Modal } from "antd";
+import { ButtonPrimary } from "./button";
+
+const ModalCustom = styled(Modal)`
+    .ant-modal-body {
+        @media only screen and
+        (min-width: 1024px) {
+            padding: 58px 24px !important;
+            min-height: 60vh;
+
+            iframe {
+                min-height: 500px;
+            }
+        }
+    }
+`
+
+export default class Card extends Component {
+  state = {
+    isOpen: false
+  };
+
+  handleView = () => this.setState({ isOpen: !this.state.isOpen });
+
+  render() {
+    const { video } = this.props;
+    return (
+      <React.Fragment>
+        <div className="col-12 col-md-6 col-lg-4">
+          <div className="card mb-4 shadow-sm">
+            <img
+              src={video.snippet.thumbnails.medium.url}
+              className="card-img-top"
+              height="225"
+              width="100%"
+              alt={video.snippet.title}
+            />
             <div className="card-body">
-                <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <div className="d-flex justify-content-between align-items-center">
-                <div className="btn-group">
-                    <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small className="text-muted">9 mins</small>
-                </div>
+              <p className="card-text">{video.snippet.title}</p>
+              <div className="d-flex justify-content-between align-items-center">
+                <ButtonPrimary
+                    type="button"
+                    className="btn btn-sm"
+                    onClick={this.handleView}
+                  >
+                    View
+                </ButtonPrimary>
+                <small className="text-muted">
+                  {video.snippet.channelTitle}
+                </small>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-)
-
-export default Card
+        <ModalCustom
+            closable
+            destroyOnClose
+            className='w-75 py-5'
+            visible={this.state.isOpen}
+            onCancel={this.handleView}
+            footer={null}
+            cancelText={'Close'}
+        >
+            <h4>{video.snippet.title}</h4>
+            <YouTube
+                videoId={video.snippet.resourceId.videoId}
+                className='w-100 h-100'
+                opts={{
+                    playerVars: {
+                      autoplay: 1
+                    }
+                  }}
+            />
+        </ModalCustom>
+      </React.Fragment>
+    );
+  }
+}

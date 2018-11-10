@@ -1,6 +1,10 @@
+@import '~antd/dist/antd.css';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
 body {
   margin: 0;
   padding: 0;
+  padding-top: 100px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -11,4 +15,9 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.ant-notification {
+  z-index: 1035 !important;
+  top: 80px !important;
 }
