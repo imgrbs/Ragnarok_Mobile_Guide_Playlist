@@ -10,6 +10,7 @@ import { UserContext } from './context';
 import Landing from "./components/landing";
 import Login from "./components/login";
 import NotFound from "./components/error/NotFound";
+import Developer from "./components/developer";
 
 import Navbar from "./components/base/navbar";
 
@@ -39,6 +40,7 @@ class App extends Component {
         <Navbar logout={this.logout} />
         <Switch>
           { isEmpty(user) && <Route exact path="/login" component={Login} /> }
+          <Route exact path="/developer" component={Developer} />
           <Route exact path="/" component={Landing} />
           <Route component={NotFound} />
         </Switch>
