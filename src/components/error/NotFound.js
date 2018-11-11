@@ -4,7 +4,6 @@ import { Row } from 'reactstrap';
 import { Card } from 'antd';
 
 import Container, { Col } from '../base/layout';
-import { ButtonPrimary } from '../base/button';
 
 export default class NotFound extends Component {
   render() {
