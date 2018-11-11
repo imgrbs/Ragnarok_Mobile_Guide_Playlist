@@ -3,6 +3,7 @@ import { notification } from 'antd';
 
 import { insert } from "../../config/firebase";
 import { UserContext } from "../../context";
+import { EPERM } from "constants";
 
 
 const openNotificationWithIcon = (type) => {
@@ -20,7 +21,8 @@ class AddPlaylist extends Component {
     this.setState({ url: e.target.value });
   };
 
-  addPlaylist = () => {
+  addPlaylist = (e) => {
+    e.preventDefault();
     const { url } = this.state;
     const { user } = this.props;
     let index = url.indexOf("list=") + 5;
