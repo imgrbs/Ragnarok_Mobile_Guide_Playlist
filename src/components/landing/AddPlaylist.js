@@ -31,6 +31,7 @@ class AddPlaylist extends Component {
     this.props.handleModal();
     insert(`/playlist/${playlistId}`, { url, playlistId, userUid: user.uid });
     openNotificationWithIcon('success');
+    this.setState({ url: '' })
   };
 
   render() {
