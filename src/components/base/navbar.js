@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import { Modal } from "antd";
 
@@ -78,9 +79,9 @@ export default class Navbar extends Component {
             >
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
-                  <a className="nav-link" href="/">
+                  <Link className="nav-link" to="/">
                     Home
-                  </a>
+                  </Link>
                 </li>
               </ul>
               <div className="ml-auto text-white">
@@ -88,9 +89,9 @@ export default class Navbar extends Component {
                     isEmpty(user) ? (
                       <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                          <a className="nav-link active" href={'/login'}>
+                          <Link className="nav-link active" to={'/login'}>
                           Login
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     ) : (

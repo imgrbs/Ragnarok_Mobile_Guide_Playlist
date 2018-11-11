@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { Row } from 'reactstrap';
 import { Card } from 'antd';
 
@@ -18,7 +19,7 @@ export default class NotFound extends Component {
               </Col>
 
             <Col className='text-center'>
-              <a href="/">Back to Home</a>
+              <Link to="/">Back to Home</Link>
             </Col>
           </Row>
         </Card>
